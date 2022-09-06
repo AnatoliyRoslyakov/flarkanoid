@@ -1,6 +1,6 @@
-import 'package:arcanoid/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
+import 'package:flarkanoid/constants.dart';
 import 'package:flutter/services.dart';
 
 import '../../../components/components.dart';

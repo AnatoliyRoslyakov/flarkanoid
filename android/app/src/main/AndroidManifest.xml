@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ch.yannickmauray.arcanoid">
+    package="ch.yannickmauray.flarkanoid">
    <application
-        android:label="arcanoid"
+        android:label="flarkanoid"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

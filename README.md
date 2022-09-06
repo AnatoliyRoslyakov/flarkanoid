@@ -1,4 +1,4 @@
-# arcanoid
+# flarkanoid
 
 A new Flutter project.
 

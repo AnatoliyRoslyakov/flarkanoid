@@ -1,6 +1,6 @@
-import 'package:arcanoid/arkanoid_game.dart';
 import 'package:flame/components.dart';
 import 'package:flame_behaviors/flame_behaviors.dart';
+import 'package:flarkanoid/arkanoid_game.dart';
 
 import '../../entities.dart';
 

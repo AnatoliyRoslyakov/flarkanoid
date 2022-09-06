@@ -1,4 +1,4 @@
-package ch.yannickmauray.arcanoid
+package ch.yannickmauray.flarkanoid
 
 import io.flutter.embedding.android.FlutterActivity
 
