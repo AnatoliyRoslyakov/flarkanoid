@@ -3,11 +3,21 @@ import 'package:flame/sprite.dart';
 import 'package:flutter/widgets.dart';
 
 class Score extends PositionComponent with HasGameRef {
-  int points = 0;
   final SpriteSheet _spriteSheet;
+  final double _top;
+  final int _length;
 
-  Score({required SpriteSheet spritesheet})
-      : _spriteSheet = spritesheet,
+  int points;
+
+  Score({
+    required SpriteSheet spritesheet,
+    required double top,
+    int length = 6,
+    String name = 'unnamed',
+    this.points = 0,
+  })  : _spriteSheet = spritesheet,
+        _top = top,
+        _length = length,
         super(
           anchor: Anchor.topCenter,
         );
@@ -15,12 +25,12 @@ class Score extends PositionComponent with HasGameRef {
   @override
   void render(Canvas canvas) {
     var temp = points;
-    for (var d = 0; d < 6; d++) {
+    for (var d = 0; d < _length; d++) {
       final sprite = _spriteSheet.getSprite(0, temp % 10);
       sprite.render(
         canvas,
-        position: Vector2(279.0 - 8 * d, 63.0),
-        anchor: Anchor.topLeft,
+        position: Vector2(260.0 + (_length - 1) * 4 - 8 * d, _top),
+        anchor: Anchor.topCenter,
       );
       temp = temp ~/ 10;
     }

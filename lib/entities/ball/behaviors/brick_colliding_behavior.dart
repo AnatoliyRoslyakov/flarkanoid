@@ -31,7 +31,7 @@ class BrickCollidingBehavior extends CollisionBehavior<Brick, Ball>
       //debugPrint("Hit from the bottom side");
       parent.velocity.y *= -1;
     }
-    gameRef.score!.points += other.points;
+    gameRef.addPoints(other.points);
     other.removeFromParent();
   }
 }

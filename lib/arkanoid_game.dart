@@ -14,7 +14,14 @@ import 'entities/entities.dart';
 class ArkanoidGame extends FlameGame
     with HasKeyboardHandlerComponents, HasCollisionDetection {
   Score? score;
+  Score? highScore;
+  Score? round;
   SpriteComponent? scoreLabel;
+  SpriteComponent? highScoreLabel;
+  SpriteComponent? roundLabel;
+  SpriteComponent? flutterLogo;
+
+  int lives = 3;
 
   @override
   Color backgroundColor() => const Color(0xff202020);
@@ -85,13 +92,13 @@ class ArkanoidGame extends FlameGame
       SpriteComponent(
         sprite: flarkanoidSprite,
         size: Vector2(108, 18),
-        position: Vector2(262, 20),
+        position: Vector2(259, 20),
         anchor: Anchor.topCenter,
       ),
       scoreLabel = SpriteComponent(
         sprite: Sprite(await imagesLoader.load('score.png')),
         size: Vector2(39, 8),
-        position: Vector2(262, 52),
+        position: Vector2(259, 52),
         anchor: Anchor.topCenter,
       ),
       score = Score(
@@ -99,7 +106,59 @@ class ArkanoidGame extends FlameGame
           image: await imagesLoader.load('numbers.png'),
           srcSize: Vector2(8, 6),
         ),
+        top: 63,
+        length: 5,
+        name: "Score",
       ),
+      highScoreLabel = SpriteComponent(
+        sprite: Sprite(await imagesLoader.load('high_score.png')),
+        size: Vector2(72, 8),
+        position: Vector2(259, 81),
+        anchor: Anchor.topCenter,
+      ),
+      highScore = Score(
+        spritesheet: SpriteSheet(
+          image: await imagesLoader.load('numbers.png'),
+          srcSize: Vector2(8, 6),
+        ),
+        top: 92,
+        name: "High score",
+      ),
+      roundLabel = SpriteComponent(
+        sprite: Sprite(await imagesLoader.load('round.png')),
+        size: Vector2(39, 8),
+        position: Vector2(259, 115),
+        anchor: Anchor.topCenter,
+      ),
+      round = Score(
+        spritesheet: SpriteSheet(
+          image: await imagesLoader.load('numbers.png'),
+          srcSize: Vector2(8, 6),
+        ),
+        top: 126,
+        length: 1,
+        name: "Round",
+        points: 1,
+      ),
+      flutterLogo = SpriteComponent(
+        sprite: Sprite(await imagesLoader.load('flutter.png')),
+        size: Vector2(50, 62),
+        scale: Vector2(.5, .5),
+        position: Vector2(259, 158),
+        anchor: Anchor.topCenter,
+      ),
+      SpriteComponent(
+        sprite: paddleSprite,
+        scale: Vector2(.5, .5),
+        position: Vector2(20, 193),
+        anchor: Anchor.topLeft,
+      ),
+      SpriteComponent(
+        sprite: paddleSprite,
+        scale: Vector2(.5, .5),
+        position: Vector2(35, 193),
+        anchor: Anchor.topLeft,
+      )
       // Add a FPS counter if in debug mode.
       //if (kDebugMode)
       //  FpsTextComponent(
@@ -179,5 +238,12 @@ class ArkanoidGame extends FlameGame
   ) {
     super.onKeyEvent(event, keysPressed);
     return KeyEventResult.handled;
+  }
+
+  void addPoints(int points) {
+    score!.points += points;
+    if (highScore!.points < score!.points) {
+      highScore!.points = score!.points;
+    }
   }
 }
