@@ -11,3 +11,5 @@ void main() {
     ),
   );
 }
+
+// Upgrade your flutter to latest version then delete android folder in your project then type flutter create . in terminal or cmd if you're using windows and done
