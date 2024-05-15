@@ -1,4 +1,4 @@
-package ch.yannickmauray.flarkanoid
+package com.example.flarkanoid
 
 import io.flutter.embedding.android.FlutterActivity
 
